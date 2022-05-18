@@ -1,0 +1,36 @@
+body {
+  background-color: $primary-light;
+  border: 10px solid $primary-main;
+  @include device(s) {
+    border: none;
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+p {
+  @include typograph-primary(18);
+}
+
+.title {
+  @include typograph-primary(18);
+  text-transform: uppercase;
+  @include device(s) {
+    margin-bottom: 40px;
+  }
+  &::after {
+    content: "";
+    display: block;
+    width: 75%;
+    float: right;
+    height: 2px;
+    background-color: $neutral-main;
+    margin-top: 14px;
+    @include device(m) {
+      width: 60%;
+    }
+  }
+}

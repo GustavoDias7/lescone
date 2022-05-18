@@ -1,0 +1,66 @@
+// Colors
+$primary-light: #edece4;
+$primary-main: #cbc6b9;
+$primary-dark: #988c77;
+$success-main: #1ab912;
+$error-main: #ee4646;
+$neutral-main: #2a2426;
+
+// Typograph
+$font-family-primary: "PT Mono", monospace;
+$font-family-secondary: "Aref Ruqaa", serif;
+$font-family-tertiary: "Roboto", sans-serif;
+
+@function rem($pixel, $context: 16) {
+  @return $pixel / $context + rem;
+}
+
+@mixin typograph-primary($size) {
+  font-family: $font-family-primary;
+  @if $size == 18 {
+    font-size: rem(18);
+    line-height: rem(30, 18);
+  }
+}
+
+@mixin typograph-secondary($size) {
+  font-family: $font-family-secondary;
+  @if $size == 18 {
+    font-size: rem(18);
+    line-height: rem(30, 18);
+  } @else if $size == 24 {
+    font-size: rem(24);
+    line-height: rem(30, 24);
+  }
+}
+
+@mixin box-shadow-templace($shadow, $states) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+
+  @if $states != none {
+    &:hover,
+    &:focus {
+      -webkit-box-shadow: $states;
+      -moz-box-shadow: $states;
+      box-shadow: $states;
+    }
+  }
+}
+
+@mixin box-shadow($type) {
+  $shadow: none;
+  $shadow2: none;
+
+  @if $type == primary {
+    $shadow: 5px 5px 0px -2px $primary-main, 5px 5px 0px 0px $primary-dark;
+    $shadow2: 3px 3px 0px -2px $primary-main, 3px 3px 0px 0px $primary-dark;
+  } @else if $type == secondary {
+    $shadow: 0px 0px 0px 10px $primary-main;
+  } @else if $type == tertiary {
+    $shadow: 0px 0px 0px 10px $neutral-main;
+  }
+
+  @include box-shadow-templace($shadow, $shadow2);
+}

@@ -1,0 +1,47 @@
+.menu {
+  margin-top: 120px;
+  margin-bottom: 120px;
+  @include device(s) {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}
+.menu-item {
+  position: relative;
+  margin-bottom: 60px;
+  h3 {
+    @include typograph-secondary(24);
+    margin-bottom: 2rem;
+  }
+  li {
+    @include typograph-primary(18);
+    line-height: rem(35, 18);
+    span {
+      display: inline-block;
+      width: 70px;
+      margin-right: 10px;
+      margin-left: -80px;
+      color: $primary-dark;
+      text-align: right;
+      font-family: $font-family-secondary;
+      @include device(s) {
+        margin-left: 0;
+        width: auto;
+      }
+    }
+  }
+  img {
+    border-radius: 50%;
+    border: 10px solid $primary-main;
+    position: absolute;
+    right: 0px;
+    margin-top: 16px;
+    @include device(l) {
+      right: 120px;
+    }
+    @include device(s) {
+      width: 120px;
+      margin-top: 0px;
+    }
+  }
+}
